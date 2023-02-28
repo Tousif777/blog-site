@@ -7,12 +7,16 @@ import { usePostData } from '../../hooks/usePostData';
 
 
 const Homepage = () => {
-  const [data, setdata] = useState<any[]>([]);
   const currentUser = useSelector((state: any) => state.user.currentUser);
   const { signInWithGoogle, signOut } = useGoogleSignIn();
-  const {posts} = usePostData();
+  const {posts, isLoading, myPosts} = usePostData();
   const navigate = useNavigate();
-  console.log('data :>> ', posts);
+  
+  if (isLoading !== true){
+    console.log('object :>> ', posts);
+    console.log('myPosts :>> ', myPosts);
+  }
+  
 
 
 
@@ -29,6 +33,7 @@ const Homepage = () => {
             {currentUser ? (
               <div>
                 <p>Welcome, {currentUser.name}!</p>
+                <p>Welcome, {currentUser.email}!</p>
                 <button onClick={handleCreatePost}>Create a post</button>
                 <button onClick={signOut}>Logout</button>
               </div>
