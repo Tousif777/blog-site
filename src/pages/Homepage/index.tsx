@@ -1,101 +1,601 @@
 import React, { useState } from 'react'
-import Image from 'react-bootstrap/esm/Image'
 
 const Homepage = () => {
-  const [user , setUser] = useState("oooo")
   return (
     <div>
-        <div className="container">
-          <header className="blog-header lh-1 py-3">
-            <div className="row flex-nowrap justify-content-between align-items-center">
-              <div className="col-4">
-                <Image style={{
-                  height:"30px",
-                  width:"100px"
-                }} src='data:image/jpeg;base64,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'/>
-              </div>
-              <div className="col-4 d-flex justify-content-end align-items-center">
-                <a className="link-secondary" href="#" aria-label="Search">
-                  <svg xmlns="http://www.w3.org/2000/svg" width={20} height={20} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="mx-3" role="img" viewBox="0 0 24 24"><title>Search</title><circle cx="10.5" cy="10.5" r="7.5" /><path d="M21 21l-5.2-5.2" /></svg>
-                </a>
-                {
-                  user? <p>{user}</p>:                 <a className="btn btn-sm btn-outline-secondary" href="#">Sign up</a>
-
-                }
-              </div>
-            </div>
-          </header>
-        </div>
-        <main className="container">
-          <div className="p-4 p-md-5 mb-4 rounded text-bg-dark">
-            <div className="col-md-6 px-0">
-              <h1 className="display-4 fst-italic">Title of a longer featured blog post</h1>
-              <p className="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what’s most interesting in this post’s contents.</p>
-            </div>
-          </div>
-          <div className="row mb-2">
-            <div className="col-md-6">
-              <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div className="col p-4 d-flex flex-column position-static">
-                  <strong className="d-inline-block mb-2 text-primary">World</strong>
-                  <h3 className="mb-0">Featured post</h3>
-                  <div className="mb-1 text-muted">Nov 12</div>
-                  <p className="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" className="stretched-link">Continue reading</a>
-                </div>
-                <div className="col-auto d-none d-lg-block">
-                  <svg className="bd-placeholder-img" width={200} height={250} xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6">
-              <div className="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div className="col p-4 d-flex flex-column position-static">
-                  <strong className="d-inline-block mb-2 text-success">Design</strong>
-                  <h3 className="mb-0">Post title</h3>
-                  <div className="mb-1 text-muted">Nov 11</div>
-                  <p className="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" className="stretched-link">Continue reading</a>
-                </div>
-                <div className="col-auto d-none d-lg-block">
-                <div className="col-4">
-                <Image  src='data:image/jpeg;base64,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'/>
-              </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row g-5">
-            <div className="col-md-8">
-              <h3 className="pb-4 mb-4 fst-italic border-bottom">
-                From the Database
-              </h3>
-              
-              
-              <article className="blog-post">
-                <h2 className="blog-post-title mb-1">New feature</h2>
-                <p className="blog-post-meta">December 14, 2020 by <a href="#">Chris</a></p>
-                <p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
-                <ul>
-                  <li>First list item</li>
-                  <li>Second list item with a longer description</li>
-                  <li>Third list item to close it out</li>
+      <>
+        <div className="bg-yellow border-bottom-dark py-2 order-sm-10">
+          <div className="container">
+            <nav className="navbar navbar-expand-lg navbar-light ">
+              <svg
+                style={{ width: 141, height: 35 }}
+                viewBox="0 0 3940 610"
+                className="bo bp navbar-brand"
+              >
+                <path d="M594.79 308.2c0 163.76-131.85 296.52-294.5 296.52S5.8 472 5.8 308.2 137.65 11.69 300.29 11.69s294.5 132.75 294.5 296.51M917.86 308.2c0 154.16-65.93 279.12-147.25 279.12s-147.25-125-147.25-279.12S689.29 29.08 770.61 29.08s147.25 125 147.25 279.12M1050 308.2c0 138.12-23.19 250.08-51.79 250.08s-51.79-112-51.79-250.08 23.19-250.08 51.8-250.08S1050 170.09 1050 308.2M1862.77 37.4l.82-.18v-6.35h-167.48l-155.51 365.5-155.51-365.5h-180.48v6.35l.81.18c30.57 6.9 46.09 17.19 46.09 54.3v434.45c0 37.11-15.58 47.4-46.15 54.3l-.81.18V587H1327v-6.35l-.81-.18c-30.57-6.9-46.09-17.19-46.09-54.3V116.9L1479.87 587h11.33l205.59-483.21V536.9c-2.62 29.31-18 38.36-45.68 44.61l-.82.19v6.3h213.3v-6.3l-.82-.19c-27.71-6.25-43.46-15.3-46.08-44.61l-.14-445.2h.14c0-37.11 15.52-47.4 46.08-54.3m97.43 287.8c3.49-78.06 31.52-134.4 78.56-135.37 14.51.24 26.68 5 36.14 14.16 20.1 19.51 29.55 60.28 28.09 121.21zm-2.11 22h250v-1.05c-.71-59.69-18-106.12-51.34-138-28.82-27.55-71.49-42.71-116.31-42.71h-1c-23.26 0-51.79 5.64-72.09 15.86-23.11 10.7-43.49 26.7-60.45 47.7-27.3 33.83-43.84 79.55-47.86 130.93-.13 1.54-.24 3.08-.35 4.62s-.18 2.92-.25 4.39a332.64 332.64 0 0 0-.36 21.69C1860.79 507 1923.65 600 2035.3 600c98 0 155.07-71.64 169.3-167.8l-7.19-2.53c-25 51.68-69.9 83-121 79.18-69.76-5.22-123.2-75.95-118.35-161.63m532.69 157.68c-8.2 19.45-25.31 30.15-48.24 30.15s-43.89-15.74-58.78-44.34c-16-30.7-24.42-74.1-24.42-125.51 0-107 33.28-176.21 84.79-176.21 21.57 0 38.55 10.7 46.65 29.37zm165.84 76.28c-30.57-7.23-46.09-18-46.09-57V5.28L2424.77 60v6.7l1.14-.09c25.62-2.07 43 1.47 53.09 10.79 7.9 7.3 11.75 18.5 11.75 34.26v71.14c-18.31-11.69-40.09-17.38-66.52-17.38-53.6 0-102.59 22.57-137.92 63.56-36.83 42.72-56.3 101.1-56.3 168.81C2230 518.72 2289.53 600 2378.13 600c51.83 0 93.53-28.4 112.62-76.3V588h166.65v-6.66zm159.29-505.33c0-37.76-28.47-66.24-66.24-66.24-37.59 0-67 29.1-67 66.24s29.44 66.24 67 66.24c37.77 0 66.24-28.48 66.24-66.24m43.84 505.33c-30.57-7.23-46.09-18-46.09-57h-.13V166.65l-166.66 47.85v6.5l1 .09c36.06 3.21 45.93 15.63 45.93 57.77V588h166.8v-6.66zm427.05 0c-30.57-7.23-46.09-18-46.09-57V166.65L3082 212.92v6.52l.94.1c29.48 3.1 38 16.23 38 58.56v226c-9.83 19.45-28.27 31-50.61 31.78-36.23 0-56.18-24.47-56.18-68.9V166.66l-166.66 47.85V221l1 .09c36.06 3.2 45.94 15.62 45.94 57.77v191.27a214.48 214.48 0 0 0 3.47 39.82l3 13.05c14.11 50.56 51.08 77 109 77 49.06 0 92.06-30.37 111-77.89v66h166.66v-6.66zM3934.2 588v-6.67l-.81-.19c-33.17-7.65-46.09-22.07-46.09-51.43v-243.2c0-75.83-42.59-121.09-113.93-121.09-52 0-95.85 30.05-112.73 76.86-13.41-49.6-52-76.86-109.06-76.86-50.12 0-89.4 26.45-106.25 71.13v-69.87l-166.66 45.89v6.54l1 .09c35.63 3.16 45.93 15.94 45.93 57V588h155.5v-6.66l-.82-.2c-26.46-6.22-35-17.56-35-46.66V255.72c7-16.35 21.11-35.72 49-35.72 34.64 0 52.2 24 52.2 71.28V588h155.54v-6.66l-.82-.2c-26.46-6.22-35-17.56-35-46.66v-248a160.45 160.45 0 0 0-2.2-27.68c7.42-17.77 22.34-38.8 51.37-38.8 35.13 0 52.2 23.31 52.2 71.28V588z" />
+              </svg>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span className="navbar-toggler-icon" />
+              </button>
+              <div className="collapse navbar-collapse " id="navbarNavDropdown">
+                <ul className="navbar-nav ml-auto">
+                  
+                  <li className="nav-item mt-1">
+                    <a className="nav-link active" href="#">
+                      Sign In
+                    </a>
+                  </li>
+                  
                 </ul>
-                <p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
-              </article>
-             
-            </div>
-            <div className="col-md-4">
-              <div className="position-sticky" style={{top: '2rem'}}>
-                <div className="p-4 mb-3 bg-light rounded">
-                  <h4 className="fst-italic">About</h4>
-                  <p className="mb-0">Customize this section to tell your visitors a little bit about your publication, writers, content, or something else entirely. Totally up to you.</p>
-                </div>
-               
+              </div>
+            </nav>
+          </div>
+        </div>
+        {/* nav end */}
+        {/* jumbobox start */}
+        <div className="bg-yellow pt-4 pb-1 border-bottom-dark order-sm-9">
+          <div className="container py-2">
+            <div className="row">
+              <div className="col-sm-6 pt-2">
+                <h1 className="font-spectral">
+                  <strong>Explore new perspectives</strong>
+                </h1>
+                <p className="my-4 lead" style={{ fontSize: 18 }}>
+                  <strong>
+                    Read and share ideas from independent voices, world-class
+                    publications, and experts from around the globe. Everyone's
+                    welcome.
+                  </strong>
+                  <a href="#" className="text-dark">
+                    <u>Learn more.</u>
+                  </a>
+                </p>
+                <a
+                  href="#"
+                  className="btn btn-outline-dark px-3 hover-dark"
+                  style={{ fontSize: 16 }}
+                >
+                  Get Started
+                </a>
+              </div>
+              <div className="col-sm-6 pl-5 d-none d-sm-block">
+                <img
+                  className="rounded-circle "
+                  src="./img/world.png"
+                  alt="world map"
+                />
               </div>
             </div>
           </div>
-        </main>
+        </div>
+        {/* jumbobox end*/}
+        {/* trending section start */}
+        <div className="border-bottom pb-4 order-sm-8">
+          <div className="container mt-5 ">
+            <div className="row">
+              <div className="col-12">
+                <p>
+                  <i className="fas fa-rocket" />
+                  <strong className="ml-2">TRENDING ON MEDIUM</strong>
+                </p>
+              </div>
+            </div>
+            <div className="row ">
+              <div className="col-sm-4 ">
+                <div className="row">
+                  <div className="col-sm-2 col-2">
+                    <h3 className="text-black-50 ">01</h3>
+                  </div>
+                  <div className="col-sm-10 col-10">
+                    <div className="row mt-1">
+                      <div className="col-sm-2 col-1 mr-1 mr-sm-0">
+                        <img
+                          src="https://picsum.photos/id/15/30/30"
+                          className="img-responsive rounded"
+                          alt=""
+                          srcSet=""
+                        />
+                      </div>
+                      <div className="col-sm-10 col-10 pt-1 ">
+                        <p>
+                          Succesful <strong>Monkey</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <strong>
+                      Elite Edge Node BETA now live on Testnet with Uptime Mining —
+                    </strong>
+                    <ul className="list-inline small text-black-50 mt-2 ">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                      <li className="list-inline-item">
+                        <i className="fas fa-star bg-color-secondary" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4 ">
+                <div className="row">
+                  <div className="col-sm-2 col-2">
+                    <h3 className="text-black-50 ">02</h3>
+                  </div>
+                  <div className="col-sm-10 col-10">
+                    <div className="row mt-1">
+                      <div className="col-sm-2 col-1 mr-1 mr-sm-0">
+                        <img
+                          src="https://picsum.photos/id/151/30/30"
+                          className="img-responsive rounded"
+                          alt=""
+                          srcSet=""
+                        />
+                      </div>
+                      <div className="col-sm-10 col-10 pt-1">
+                        <p>
+                          Beatiful <strong>World</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <strong>
+                      Elite Edge Node BETA now live on Testnet with Uptime Mining —
+                    </strong>
+                    <ul className="list-inline small text-black-50 mt-2 ">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                      <li className="list-inline-item">
+                        <i className="fas fa-star bg-color-secondary" />
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="row">
+                  <div className="col-sm-2 col-2">
+                    <h3 className="text-black-50 ">03</h3>
+                  </div>
+                  <div className="col-sm-10 col-10">
+                    <div className="row mt-1">
+                      <div className="col-sm-2 col-1 mr-1 mr-sm-0">
+                        <img
+                          src="https://picsum.photos/id/171/30/30"
+                          className="img-responsive rounded"
+                          alt=""
+                          srcSet=""
+                        />
+                      </div>
+                      <div className="col-sm-10 col-10 pt-1">
+                        <p>
+                          Hello <strong>Sunshine</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <strong>
+                      Elite Edge Node BETA now live on Testnet with Uptime Mining —
+                    </strong>
+                    <ul className="list-inline small text-black-50 mt-2 ">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="row">
+                  <div className="col-sm-2 col-2">
+                    <h3 className="text-black-50 ">04</h3>
+                  </div>
+                  <div className="col-sm-10 col-10">
+                    <div className="row mt-1">
+                      <div className="col-sm-2 col-1 mr-1 mr-sm-0">
+                        <img
+                          src="https://picsum.photos/id/271/30/30"
+                          className="img-responsive rounded"
+                          alt=""
+                          srcSet=""
+                        />
+                      </div>
+                      <div className="col-sm-10 col-10 pt-1">
+                        <p>
+                          Is this <strong>worth ?</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <strong>
+                      Elite Edge Node BETA now live on Testnet with Uptime Mining —
+                    </strong>
+                    <ul className="list-inline small text-black-50 mt-2 ">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="row">
+                  <div className="col-sm-2 col-2">
+                    <h3 className="text-black-50 ">05</h3>
+                  </div>
+                  <div className="col-sm-10 col-10">
+                    <div className="row mt-1">
+                      <div className="col-sm-2 col-1 mr-1 mr-sm-0">
+                        <img
+                          src="https://picsum.photos/id/61/30/30"
+                          className="img-responsive rounded"
+                          alt=""
+                          srcSet=""
+                        />
+                      </div>
+                      <div className="col-sm-10 col-10 pt-1">
+                        <p>
+                          Hello <strong>JavaScript</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <strong>
+                      Elite Edge Node BETA now live on Testnet with Uptime Mining —
+                    </strong>
+                    <ul className="list-inline small text-black-50 mt-2 ">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div className="col-sm-4">
+                <div className="row">
+                  <div className="col-sm-2 col-2">
+                    <h3 className="text-black-50 ">06</h3>
+                  </div>
+                  <div className="col-sm-10 col-10">
+                    <div className="row mt-1">
+                      <div className="col-sm-2 col-1 mr-1 mr-sm-0">
+                        <img
+                          src="https://picsum.photos/id/211/30/30"
+                          className="img-responsive rounded"
+                          alt=""
+                          srcSet=""
+                        />
+                      </div>
+                      <div className="col-sm-10 col-10 pt-1">
+                        <p>
+                          About <strong>Bootsrap</strong>
+                        </p>
+                      </div>
+                    </div>
+                    <strong>
+                      Elite Edge Node BETA now live on Testnet with Uptime Mining —
+                    </strong>
+                    <ul className="list-inline small text-black-50 mt-2 ">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* trending section end */}
+        {/* articles section start */}
+        <div className="container mt-5">
+          <div className="row">
+            {/* left side start */}
+            <div className="col-sm-7 col-7 order-2 order-sm-1 ml-5 ml-sm-0">
+              <div className="row  mt-2">
+                <div className="col-sm-8 col-8">
+                  <div className="row ">
+                    <div className="col-sm-1 col-1 mt-1">
+                      <img
+                        src="https://picsum.photos/id/15/30/30"
+                        className="rounded"
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
+                    <div className="col-sm-5 col-6 pl-4  pt-sm-1 pl-sm-3">
+                      <p>
+                        Succesful <strong>Monkey</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-1">
+                    <h5>
+                      <strong>
+                        Elite Edge Node BETA now live on Testnet with Uptime Mining
+                      </strong>
+                    </h5>
+                  </div>
+                  <div>
+                    <h6 className="text-secondary d-none d-sm-block">
+                      Lorem ipsum dolor sit amet.
+                    </h6>
+                  </div>
+                  <div className="row text-black-50 mt-2 pt-1 ">
+                    <ul className="list-inline small col-sm-10 d-none d-sm-block">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                    <div className="col-sm-2 pl-4 d-none d-sm-block">
+                      <i className="far fa-bookmark fa-lg" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-3 col-2 ">
+                  <img src="https://picsum.photos/id/237/200/160" alt="" srcSet="" />
+                </div>
+              </div>
+              <div className="row  mt-3 mt-sm-2">
+                <div className="col-sm-8 col-8">
+                  <div className="row ">
+                    <div className="col-sm-1 col-1 mt-1">
+                      <img
+                        src="https://picsum.photos/id/25/30/30"
+                        className="rounded"
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
+                    <div className="col-sm-5 col-6 pl-4  pt-sm-1 pl-sm-3">
+                      <p>
+                        Succesful <strong>Monkey</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-1">
+                    <h5>
+                      <strong>
+                        Elite Edge Node BETA now live on Testnet with Uptime Mining
+                      </strong>
+                    </h5>
+                  </div>
+                  <div>
+                    <h6 className="text-secondary d-none d-sm-block">
+                      Lorem ipsum dolor sit amet.
+                    </h6>
+                  </div>
+                  <div className="row text-black-50 mt-2 pt-1 ">
+                    <ul className="list-inline small col-sm-10 d-none d-sm-block">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                    <div className="col-sm-2 pl-4 d-none d-sm-block">
+                      <i className="far fa-bookmark fa-lg" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-3 col-2 ">
+                  <img src="https://picsum.photos/id/247/200/160" alt="" srcSet="" />
+                </div>
+              </div>
+              <div className="row  mt-3 mt-sm-2">
+                <div className="col-sm-8 col-8">
+                  <div className="row ">
+                    <div className="col-sm-1 col-1 mt-1">
+                      <img
+                        src="https://picsum.photos/id/251/30/30"
+                        className="rounded"
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
+                    <div className="col-sm-5 col-6 pl-4  pt-sm-1 pl-sm-3">
+                      <p>
+                        Succesful <strong>Monkey</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-1">
+                    <h5>
+                      <strong>
+                        Elite Edge Node BETA now live on Testnet with Uptime Mining
+                      </strong>
+                    </h5>
+                  </div>
+                  <div>
+                    <h6 className="text-secondary d-none d-sm-block">
+                      Lorem ipsum dolor sit amet.
+                    </h6>
+                  </div>
+                  <div className="row text-black-50 mt-2 pt-1 ">
+                    <ul className="list-inline small col-sm-10 d-none d-sm-block">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                    <div className="col-sm-2 pl-4 d-none d-sm-block">
+                      <i className="far fa-bookmark fa-lg" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-3 col-2 ">
+                  <img src="https://picsum.photos/id/27/200/160" alt="" srcSet="" />
+                </div>
+              </div>
+              <div className="row  mt-3 mt-sm-2">
+                <div className="col-sm-8 col-8">
+                  <div className="row ">
+                    <div className="col-sm-1 col-1 mt-1">
+                      <img
+                        src="https://picsum.photos/id/511/30/30"
+                        className="rounded"
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
+                    <div className="col-sm-5 col-6 pl-4  pt-sm-1 pl-sm-3">
+                      <p>
+                        Succesful <strong>Monkey</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-1">
+                    <h5>
+                      <strong>
+                        Elite Edge Node BETA now live on Testnet with Uptime Mining
+                      </strong>
+                    </h5>
+                  </div>
+                  <div>
+                    <h6 className="text-secondary d-none d-sm-block">
+                      Lorem ipsum dolor sit amet.
+                    </h6>
+                  </div>
+                  <div className="row text-black-50 mt-2 pt-1 ">
+                    <ul className="list-inline small col-sm-10 d-none d-sm-block">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                    <div className="col-sm-2 pl-4 d-none d-sm-block">
+                      <i className="far fa-bookmark fa-lg" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-3 col-2 ">
+                  <img src="https://picsum.photos/id/274/200/160" alt="" srcSet="" />
+                </div>
+              </div>
+              <div className="row  mt-3 mt-sm-2">
+                <div className="col-sm-8 col-8">
+                  <div className="row ">
+                    <div className="col-sm-1 col-1 mt-1">
+                      <img
+                        src="https://picsum.photos/id/191/30/30"
+                        className="rounded"
+                        alt=""
+                        srcSet=""
+                      />
+                    </div>
+                    <div className="col-sm-5 col-6 pl-4  pt-sm-1 pl-sm-3">
+                      <p>
+                        Succesful <strong>Monkey</strong>
+                      </p>
+                    </div>
+                  </div>
+                  <div className="mt-1">
+                    <h5>
+                      <strong>
+                        Elite Edge Node BETA now live on Testnet with Uptime Mining
+                      </strong>
+                    </h5>
+                  </div>
+                  <div>
+                    <h6 className="text-secondary d-none d-sm-block">
+                      Lorem ipsum dolor sit amet.
+                    </h6>
+                  </div>
+                  <div className="row text-black-50 mt-2 pt-1 ">
+                    <ul className="list-inline small col-sm-10 d-none d-sm-block">
+                      <li className="list-inline-item">Mar 12</li>
+                      <li className="list-inline-item"> •</li>
+                      <li className="list-inline-item">3 Min Read</li>
+                    </ul>
+                    <div className="col-sm-2 pl-4 d-none d-sm-block">
+                      <i className="far fa-bookmark fa-lg" />
+                    </div>
+                  </div>
+                </div>
+                <div className="col-sm-3 col-2 ">
+                  <img src="https://picsum.photos/id/214/200/160" alt="" srcSet="" />
+                </div>
+              </div>
+            </div>
+            {/* left side end */}
+            {/* right side start*/}
+            <div className="col-sm-5 order-1 order-sm-2">
+              <h6 className="ml-5">
+                {" "}
+                <small>
+                  <strong>DISCOVER MORE OF WHAT MATTERS TO YOU</strong>
+                </small>
+              </h6>
+              <ul className="list-inline ml-5 mt-3">
+                <li className="list-inline-item mt-1">
+                  <a
+                    href="#"
+                    className="btn btn-sm btn-outline-secondary hover-dark "
+                  >
+                    Self
+                  </a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Programming
+                  </a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Data Science
+                  </a>
+                </li>
+                <li className="list-inline-item">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Productivy
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Software
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Web Development
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Politics
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    JavaScript
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Machine Learning
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Health
+                  </a>
+                </li>
+                <li className="list-inline-item mt-2">
+                  <a href="#" className="btn btn-sm btn-outline-secondary hover-dark">
+                    Fashion
+                  </a>
+                </li>
+              </ul>
+              <div>
+                <h6 className="ml-5 text-success p-1 pb-4 border-bottom ">
+                  {" "}
+                  <small>See all topics.</small>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
     </div>
   )
 }

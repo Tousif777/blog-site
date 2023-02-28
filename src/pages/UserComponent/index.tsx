@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
+import CreatePost from '../CreatePost';
 import Homepage from '../Homepage';
-
+import Login from '../Login';
 
 
 const UserComponent = () => {
@@ -15,7 +16,8 @@ const UserComponent = () => {
         <div>
           <p>Welcome, {currentUser.name}!</p>
           <button onClick={signOut}>Logout</button>
-          <Homepage />
+          {/* <Homepage /> */}
+          <CreatePost />
         </div>
       ) : (
         <div>
