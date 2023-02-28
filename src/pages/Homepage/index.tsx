@@ -1,11 +1,43 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
+import { useNavigate } from "react-router-dom";
+import {db} from "../../firebase"
+import { usePostData } from '../../hooks/usePostData';
+
 
 const Homepage = () => {
+  const [data, setdata] = useState<any[]>([]);
+  const currentUser = useSelector((state: any) => state.user.currentUser);
+  const { signInWithGoogle, signOut } = useGoogleSignIn();
+  const {posts} = usePostData();
+  const navigate = useNavigate();
+  console.log('data :>> ', posts);
+
+
+
+  const handleCreatePost = () => {
+    navigate("/createPost");
+  };
+
+
   return (
     <div>
       <>
         <div className="bg-yellow border-bottom-dark py-2 order-sm-10">
           <div className="container">
+            {currentUser ? (
+              <div>
+                <p>Welcome, {currentUser.name}!</p>
+                <button onClick={handleCreatePost}>Create a post</button>
+                <button onClick={signOut}>Logout</button>
+              </div>
+            ) : (
+              <div>
+                <p>Please log in:</p>
+                <button onClick={signInWithGoogle}>Login</button>
+              </div>
+            )}
             <nav className="navbar navbar-expand-lg navbar-light ">
               <svg
                 style={{ width: 141, height: 35 }}
@@ -27,13 +59,13 @@ const Homepage = () => {
               </button>
               <div className="collapse navbar-collapse " id="navbarNavDropdown">
                 <ul className="navbar-nav ml-auto">
-                  
+
                   <li className="nav-item mt-1">
                     <a className="nav-link active" href="#">
                       Sign In
                     </a>
                   </li>
-                  
+
                 </ul>
               </div>
             </nav>

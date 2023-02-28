@@ -1,15 +1,25 @@
 import React from 'react';
-import Homepage from './pages/Homepage';
 import Login from './pages/Login';
-import UserComponent from './pages/UserComponent';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CreatePost from './pages/CreatePost';
+import Homepage from './pages/Homepage';
+import { useSelector } from 'react-redux';
+
 
 
 function App() {
+  const currentUser = useSelector((state: any) => state.user.currentUser);
+
+
   return (
     <div className="App">
-      {/* <Homepage /> */}
-      {/* <Login /> */}
-      <UserComponent />
+      <Router>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/createPost" element={<CreatePost /> } />
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
