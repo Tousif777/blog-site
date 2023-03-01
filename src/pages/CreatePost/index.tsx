@@ -24,19 +24,31 @@ const CreatePost: React.FC = () => {
     };
 
     return (
-        <div>
-            {error && <p>{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <p>Title</p>
-                <input value={title} onChange={(event) => setTitle(event.target.value)} />
-                <p>Tag</p>
-                <input value={tag} onChange={(event) => setTag(event.target.value)} />
-                <p>Description</p>
-                <input value={description} onChange={(event) => setDescription(event.target.value)} />
-                <p>Photo</p>
-                <input type="file" accept="image/*" onChange={handlePhotoChange} />
-                <button type="submit">Add Post</button>
-            </form>
+        <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="col-md-6">
+                    {error && <p className="alert alert-danger">{error}</p>}
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="title">Title</label>
+                            <input type="text" className="form-control" id="title" value={title} onChange={(event) => setTitle(event.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="tag">Tag</label>
+                            <input type="text" className="form-control" id="tag" value={tag} onChange={(event) => setTag(event.target.value)} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="description">Description</label>
+                            <textarea className="form-control" id="description" value={description} onChange={(event) => setDescription(event.target.value)} />
+                        </div>
+                        <div className="form-group mt-4">
+                            <label htmlFor="photo">Photo</label>
+                            <input type="file" className="form-control-file" accept="image/*" onChange={handlePhotoChange} />
+                        </div>
+                        <button type="submit" className="btn btn-primary mt-4">Add Post</button>
+                    </form>
+                </div>
+            </div>
         </div>
     );
 };

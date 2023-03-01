@@ -33,15 +33,14 @@ const Login = () => {
           </div>
           <div className=" box-2 d-flex flex-column h-100">
             <div className="mt-5">
-              <p className="mb-1 h-1">Create Account.</p>
+              <p className="mb-1 h-1 mt-5">Login with Google.</p>
               <p className="text-muted mb-2">
                 Share your thouhts with the world form today.
               </p>
-              <div className="d-flex flex-column ">
-                <p className="text-muted mb-2">Continue with...</p>
+              <div className="d-flex flex-column gap-4 ">
+                <p className="text-muted mb-2">Login with Google</p>
                 <div className="d-flex align-items-center">
-
-                  <button className="btn btn-primary" onClick={signInWithGoogle}>
+                  <button className="btn btn-primary w-100 mt-4" onClick={signInWithGoogle}>
                     sign in with google
                   </button>
 

@@ -1,33 +1,75 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useGoogleSignIn } from "../../hooks/useGoogleSignIn";
+
 
 function Topbar() {
+  const navigate = useNavigate();
+  const currentUser = useSelector((state: any) => state.user.currentUser);
+  const { signOut } = useGoogleSignIn();
+
+
+  const handleCreatePost = () => {
+    navigate("/createPost");
+  };
+
+  const handleMyPosts = () => {
+    navigate("/my-posts");
+  };
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+            <nav className="navbar navbar-expand-lg">
+              <div className="container">
+                <a className="navbar-brand" href="index.html">
+                  <h2>
+                    Testing Blog<em>.</em>
+                  </h2>
+                </a>
+                <button
+                  className="navbar-toggler"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#navbarResponsive"
+                  aria-controls="navbarResponsive"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span className="navbar-toggler-icon" />
+                </button>
+                <div className="collapse navbar-collapse" id="navbarResponsive">
+                  <ul className="navbar-nav ml-auto">
+                    <li className="nav-item active">
+                      <a className="nav-link" href="index.html">
+                        Home
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="about.html">
+                        About Us
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="blog.html">
+                        Blog Entries
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="post-details.html">
+                        Post Details
+                      </a>
+                    </li>
+                    <li className="nav-item">
+                      <a className="nav-link" href="contact.html">
+                        Contact Us
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
   );
 }
 
