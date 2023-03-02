@@ -55,7 +55,7 @@ const CreatePost: React.FC = () => {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="photo">Photo</label>
-                                <input type="file" className="form-control-file mb-0" accept="image/*" onChange={handlePhotoChange} />
+                                <input type="file" className="form-control-file mb-0 border-0 p-0" accept="image/*" onChange={handlePhotoChange} />
                             </div>
                             <button type="submit" className="btn btn-primary mt-4" disabled={isLoading}>{isLoading ? 'Loading...' : 'Add Post'}</button>
                         </form>

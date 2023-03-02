@@ -3,20 +3,11 @@ import { usePostData } from "../../hooks/usePostData";
 
 const PostLists: React.FC = () => {
   const { posts } = usePostData();
-  const [randomPosts, setRandomPosts] = useState(() => {
-    const randomIndices: number[] = [];
-    while (randomIndices.length < 3) {
-      const randomIndex = Math.floor(Math.random() * posts.length);
-      if (!randomIndices.includes(randomIndex)) {
-        randomIndices.push(randomIndex);
-      }
-    }
-    return randomIndices.map((i) => posts[i]);
-  });
+  
 
   return (
     <>
-      {randomPosts.map((x) => {
+      {posts.map((x) => {
         return (
           <div className="px-3 mb-5">
             <span>
