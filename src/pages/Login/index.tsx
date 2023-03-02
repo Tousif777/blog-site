@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useGoogleSignIn } from "../../hooks/useGoogleSignIn";
+import { FaGoogle } from 'react-icons/fa';
 import "./login.css"
 
 
@@ -16,44 +17,34 @@ const Login = () => {
 
   return (
     <div style={{
-      height: "100vh",
-      width: "100vw",
+      height: "90vh",
+      width: "95vw",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center"
     }}>
       <div className="container">
-        <div className="body d-md-flex align-items-center justify-content-between">
+        <div className="body d-md-flex  justify-content-between">
           <div className="box-1 mt-md-0 mt-5">
             <img
-              src="https://images.pexels.com/photos/2033997/pexels-photo-2033997.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+              src="https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg?w=360"
               className=""
               alt=""
             />
           </div>
           <div className=" box-2 d-flex flex-column h-100">
-            <div className="mt-5">
+            <div className="mt-5 p-4 pb-0 mx-4">
               <p className="mb-1 h-1 mt-5">Login with Google.</p>
               <p className="text-muted mb-2">
-                Share your thouhts with the world form today.
+                Share your thoughts with the world from today.
               </p>
-              <div className="d-flex flex-column gap-4 ">
-                <p className="text-muted mb-2">Login with Google</p>
-                <div className="d-flex align-items-center">
-                  <button className="btn btn-primary w-100 mt-4" onClick={signInWithGoogle}>
-                    sign in with google
-                  </button>
-
-                </div>
-              </div>
+              <button className="btn btn-primary w-100 p-2" onClick={signInWithGoogle}>
+                <FaGoogle className="mr-1"/><span>   </span><b className="ml-3">Sign in with google</b> 
+              </button>
             </div>
           </div>
         </div>
       </div>
-
     </div>
-
-
   );
 };
 

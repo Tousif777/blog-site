@@ -8,9 +8,9 @@ const Homepage = () => {
     <>
       <Category />
       <div>
-      <Card />     
+        <Card />
       </div>
-=    </>
+      =    </>
   )
 }
 

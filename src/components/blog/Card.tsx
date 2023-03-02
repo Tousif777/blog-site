@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePostData } from "../../hooks/usePostData";
 import DataNotFound from "../DataNotFound";
+import PostLists from "../postLists";
 import "./blog.css";
 
 export const Card = () => {
@@ -65,7 +66,7 @@ export const Card = () => {
               </h1>
               <p className="lead">
                 Lorem ipsum dolor sit amet at enim hac integer volutpat maecenas
-                pulvinar.{" "}
+                pulvinar.
               </p>
             </div>
           </div>
@@ -97,7 +98,7 @@ export const Card = () => {
                             </span>
                           </h4>
                           <small>
-                            <i className="far fa-clock" /> {moment(item.time).format()}
+                            <i className="far fa-clock" /> {moment(item.time).format('DD MMM YYYY')}
                           </small>
                         </div>
                         <div className="card-footer">
@@ -127,12 +128,12 @@ export const Card = () => {
               </div>
             </div>
             <div className="col-4 p-4 pt-0">
-              {/*  */}
+              <PostLists />
             </div>
 
           </div>
           {!showAll && posts.length > 3 && (
-            <div className="row justify-content-center">
+            <div style={{width:"70%"}} className="row justify-content-center">
               <button
                 className="btn btn-primary"
                 onClick={() => setShowAll(true)}

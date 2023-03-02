@@ -14,7 +14,7 @@ const MyPosts = () => {
         <section className="wrapper">
             <div className="container">
                 <div className="row">
-                    <div className="col-md-8 col-sm-12 text-center mb-5">
+                    <div className="col-12 col-sm-12 text-center mb-5">
                         <h1 className="display-4">
                             This is my posts which I posted on this blogsite
                         </h1>
