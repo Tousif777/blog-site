@@ -11,7 +11,9 @@ interface Post {
     createdAt: number;
     updatedAt: number;
     photoUrl?: string;
+    authorPhoto?: string;
 }
+
 
 const usePostCrud = () => {
     const currentUser: any = useSelector((state: any) => state.user.currentUser);
@@ -31,6 +33,7 @@ const usePostCrud = () => {
             email: currentUser.email,
             createdAt: Date.now(),
             updatedAt: Date.now(),
+            authorPhoto:currentUser.photoURL
         };
 
         try {
@@ -38,6 +41,7 @@ const usePostCrud = () => {
             let photoUrl = "";
             if (photo) {
                 const photoRef = storage.ref(`posts/${newPost.createdAt}-${photo.name}`);
+                
                 const snapshot = await photoRef.put(photo);
                 photoUrl = await snapshot.ref.getDownloadURL();
             }
@@ -56,6 +60,8 @@ const usePostCrud = () => {
     };
 
     const updatePost = async (postId: string, title: string, tag: string, description: string) => {
+        console.log('updating :>> ');
+        console.log('object :>> ', postId);
         if (!currentUser) {
             setError("You must be logged in to update a post.");
             return;

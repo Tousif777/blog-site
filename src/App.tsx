@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CreatePost from './pages/CreatePost';
 import Homepage from './pages/Homepage';
 import { useSelector } from 'react-redux';
-import "./App.css"
 import MyPosts from './pages/MyPosts';
-import SinglePost from './pages/SinglePost';
+import { Header } from './components/header/Header';
+import { Footer } from './components/Footer';
+import { DetailsPages } from './pages/details/DetailsPages';
 
 function App() {
   const currentUser = useSelector((state: any) => state.user.currentUser);
@@ -14,13 +15,15 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Homepage />} />
-          <Route path="/createPost" element={<CreatePost /> } />
+          <Route path="/createPost" element={<CreatePost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/my-posts" element={<MyPosts />} />
-          <Route path="/post/:postId" element={<SinglePost />} />
+          <Route path="/post/:postId" element={<DetailsPages/>} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

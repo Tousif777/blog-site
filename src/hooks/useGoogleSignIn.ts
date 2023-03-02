@@ -18,6 +18,7 @@ export const useGoogleSignIn = (): GoogleSignIn => {
           id: authUser.uid,
           name: authUser.displayName ?? '',
           email: authUser.email ?? '',
+          photoURL: authUser.photoURL ?? '',
         };
         dispatch(login(user));
       } else {
