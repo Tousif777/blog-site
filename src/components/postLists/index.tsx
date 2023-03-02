@@ -1,26 +1,37 @@
-import React, { useState } from 'react';
+import moment from 'moment';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { usePostData } from "../../hooks/usePostData";
 
 const PostLists: React.FC = () => {
   const { posts } = usePostData();
-  
+  const navigate = useNavigate();
+
+
+  // Shuffle the posts array to get a random order
+  const shuffledPosts = posts.sort(() => 0.5 - Math.random());
+  // Get the first 3 posts from the shuffled array
+  const randomPosts = shuffledPosts.slice(0, 3);
+
+  const handleClick = (id: string) => {
+    navigate(`/post/${id}`);
+  };
 
   return (
     <>
-      {posts.map((x) => {
+      {randomPosts.map((x) => {
         return (
-          <div className="px-3 mb-5">
+          <div  style={{cursor:"pointer"}} onClick={()=>handleClick(x.id)}  className="px-3 mb-5 cursor-pointer">
             <span>
-              <p className="mb-1">Failure is not an option</p>
-              <h5>
-                Many say exploration is part of our destiny, but it’s actually our duty to
-                future generations.
+              <p className=" text-warning p-0">{x.title}</p>
+              <h5 >
+              {x.description.split(' ').slice(0, 5).join(' ')}
               </h5>
             </span>
             <p>
               Posted by
-              <span>Start Bootstrap</span>
-              on July 8, 2022
+              <span className='text-success'> {x.author} </span><br />
+              {moment(x.time).format("DD/MM/YYYY")}
             </p>
           </div>
         );

@@ -43,19 +43,19 @@ const CreatePost: React.FC = () => {
                         <form className='w-100 mt-0 mb-4 ' onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label htmlFor="title">Title</label>
-                                <input type="text" className="form-control mb-0" id="title" value={title} onChange={(event) => setTitle(event.target.value)} />
+                                <input type="text" className="form-control mb-0" id="title" value={title} onChange={(event) => setTitle(event.target.value)} required />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="tag">Tag</label>
-                                <input type="text" className="form-control mb-0" id="tag" value={tag} onChange={(event) => setTag(event.target.value)} />
+                                <input type="text" className="form-control mb-0" id="tag" value={tag} onChange={(event) => setTag(event.target.value)} required />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="description">Description</label>
-                                <textarea className="form-control mb-0" id="description" value={description} onChange={(event) => setDescription(event.target.value)} />
+                                <textarea className="form-control mb-0" id="description" value={description} onChange={(event) => setDescription(event.target.value)} required />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="photo">Photo</label>
-                                <input type="file" className="form-control-file mb-0 border-0 p-0" accept="image/*" onChange={handlePhotoChange} />
+                                <label htmlFor="photo">Photo</label><br/>
+                                <input type="file" className="form-control-file mb-0 border-0 p-0" accept="image/*" onChange={handlePhotoChange} required />
                             </div>
                             <button type="submit" className="btn btn-primary mt-4" disabled={isLoading}>{isLoading ? 'Loading...' : 'Add Post'}</button>
                         </form>

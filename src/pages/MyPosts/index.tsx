@@ -7,8 +7,22 @@ const MyPosts = () => {
 
     const handleClick = (id: string) => {
         navigate(`/post/${id}`);
-      };
-    
+    };
+
+
+    if (myPosts.length === 0) {
+        return <div style={{
+            display:"flex",
+            alignItems:"center",
+            justifyContent:"center",
+            justifyItems:"center",
+            marginTop:"20px",
+            marginBottom:"20px"
+        }}>
+            <img style={{height:"400px"}} src="https://th.bing.com/th/id/OIP.IGl85cPVx5DIzKSCmigZ6QAAAA?pid=ImgDet&rs=1" alt="" />
+        </div>
+    }
+
 
     return (<>
         <section className="wrapper">

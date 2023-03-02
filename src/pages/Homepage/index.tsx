@@ -10,7 +10,7 @@ const Homepage = () => {
       <div>
         <Card />
       </div>
-      =    </>
+     </>
   )
 }
 

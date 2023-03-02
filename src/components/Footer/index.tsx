@@ -6,7 +6,7 @@ import { RiInstagramFill } from "react-icons/ri"
 export const Footer = () => {
   return (
     <>
-      <footer className='boxItems'>
+      <footer className='boxItems mt-5'>
         <div className='container flex'>
           <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis</p>
           <div className='social'>

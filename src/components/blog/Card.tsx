@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { usePostData } from "../../hooks/usePostData";
 import DataNotFound from "../DataNotFound";
+import LoadingAnimation from "../Loading";
 import PostLists from "../postLists";
 import "./blog.css";
 
@@ -10,26 +11,29 @@ export const Card = () => {
   const { posts, isLoading } = usePostData();
   const navigate = useNavigate();
   const [showAll, setShowAll] = useState(false);
-  const visiblePosts = showAll ? posts : posts.slice(0, 3);
+  const visiblePosts = showAll ? posts : posts.slice(0, 4);
 
   const handleClick = (id: string) => {
     navigate(`/post/${id}`);
   };
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>
+      <LoadingAnimation />
+    </div>;
   }
 
   if (posts.length === 0) {
     return <>
       <section>
         <div className="container">
-          <div className="row">
-            <div className="col-6 text-center mb-5">
-              <h1 >
+          <div className="row mb-5">
+            <div className="col-6 text-center">
+              <div className="mt-5 mb-3"></div>
+              <p >
                 Stay curious. Discover stories, thinking, and expertise from
                 writers on any topic.
-              </h1>
+              </p>
               <p className="lead">
                 Lorem ipsum dolor sit amet at enim hac integer volutpat maecenas
                 pulvinar.{" "}
@@ -39,7 +43,7 @@ export const Card = () => {
           <div className="row">
             <DataNotFound />
           </div>
-          {!showAll && posts.length > 3 && (
+          {!showAll && posts.length > 4 && (
             <div className="row justify-content-center">
               <button
                 className="btn btn-primary"
@@ -60,11 +64,11 @@ export const Card = () => {
         <div className="container">
           <div className="row">
             <div className="col text-center mb-5">
-              <h1 className="display-4">
+              <p className="display-4">
                 Stay curious. Discover stories, thinking, and expertise from
                 writers on any topic.
-              </h1>
-              <p className="lead">
+              </p>
+              <p className="text-muted">
                 Lorem ipsum dolor sit amet at enim hac integer volutpat maecenas
                 pulvinar.
               </p>
@@ -128,12 +132,13 @@ export const Card = () => {
               </div>
             </div>
             <div className="col-4 p-4 pt-0">
+              <h3 className="px-3 mb-4">Related Post</h3>
               <PostLists />
             </div>
 
           </div>
           {!showAll && posts.length > 3 && (
-            <div style={{width:"70%"}} className="row justify-content-center">
+            <div style={{ width: "67%" }} className="row justify-content-center">
               <button
                 className="btn btn-primary"
                 onClick={() => setShowAll(true)}

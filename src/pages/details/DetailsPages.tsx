@@ -10,6 +10,7 @@ import EditModal from "../../components/EditModal/EditModal";
 import usePostCrud from "../../hooks/usePostCrud";
 import LoadingAnimation from "../../components/Loading";
 import moment from "moment"
+import PostLists from "../../components/postLists";
 
 interface Blog {
   title: string;
@@ -49,7 +50,7 @@ export const DetailsPages = () => {
         <section className="singlePage">
           <div className="container">
             <div className="row">
-              <div className="col-md-8 col-sm-4">
+              <div className="col-md-7 col-sm-12">
 
                 <div className="left">
                   <img className="img-fluid" style={{ maxHeight: "500px" }} src={blogs.photoUrl} alt="" />
@@ -74,8 +75,12 @@ export const DetailsPages = () => {
                   <b>Time : {moment(blogs.date).format("DD/MM/YYYY")}</b>
                 </div>
               </div>
+              <div className="col-md-1"></div>
+              <div className="col-md-4 col-sm-12">
+                <h3 className="px-3 mb-4">Related Post</h3>
+                <PostLists />
+              </div>
             </div>
-            <div className="col-md-4 col-sm-4"></div>
           </div>
         </section>
       ) : null}

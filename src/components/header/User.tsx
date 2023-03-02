@@ -9,6 +9,7 @@ export const User = () => {
   const navigate = useNavigate();
   const { signOut } = useGoogleSignIn();
   const currentUser = useSelector((state: any) => state.user.currentUser);
+  console.log('currentUser :>> ', currentUser);
 
 
   const handleLogin = () => {
@@ -25,23 +26,23 @@ export const User = () => {
         {currentUser ? (
           <>
             <button className='img' onClick={() => setProfileOpen(!profileOpen)}>
-              <img src='https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' />
+              <img src={currentUser.photoURL} alt='' />
             </button>
             {profileOpen && (
               <div className='openProfile boxItems' onClick={close}>
-                <a href='/account'>
+                <span >
                   <div className='image'>
-                    <div className='img'>
-                      <img src='https://images.pexels.com/photos/1097456/pexels-photo-1097456.jpeg?auto=compress&cs=tinysrgb&w=600' alt='' />
+                    <div  className='img'>
+                      <img style={{marginLeft:"10%"}} src={currentUser.photoURL} alt='' />
                     </div>
                     <div className='text'>
-                      <label>{currentUser.name}</label>
-                      <label style={{fontSize:"8px"}}>{currentUser.email}</label>
+                      <label>{currentUser.name}</label><br />
+                      <label style={{ fontSize: "8px" }}>{currentUser.email}</label>
                     </div>
                   </div>
-                </a>
-                <button className='box' onClick={signOut}>
-                  <BiLogOut className='icon' />
+                </span>
+                <button  className='box' onClick={signOut}>
+                  <BiLogOut style={{marginLeft:"10%"}}  className='icon' />
                   <h4>Log Out</h4>
                 </button>
               </div>
