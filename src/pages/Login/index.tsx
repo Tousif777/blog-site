@@ -38,7 +38,7 @@ const Login = () => {
                 Share your thoughts with the world from today.
               </p>
               <button className="btn btn-primary w-100 p-2" onClick={signInWithGoogle}>
-                <FaGoogle className="mr-1"/><span>   </span><b className="ml-3">Sign in with google</b> 
+                <FaGoogle style={{marginLeft:"16px"}} className="mb-1"/><b style={{marginLeft:"10px"}} className="text-white">Sign in with google</b> 
               </button>
             </div>
           </div>

@@ -1,14 +1,21 @@
 import { useNavigate } from 'react-router-dom';
 import { usePostData } from '../../hooks/usePostData';
+import LoadingAnimation from '../../components/Loading';
+import moment from 'moment';
 
 const MyPosts = () => {
-    const { myPosts } = usePostData();
+    const { myPosts, isLoading } = usePostData();
     const navigate = useNavigate();
 
     const handleClick = (id: string) => {
         navigate(`/post/${id}`);
     };
 
+    if (isLoading) {
+        return <div>
+            <LoadingAnimation />
+        </div>;
+    }
 
     if (myPosts.length === 0) {
         return <div style={{
@@ -16,8 +23,8 @@ const MyPosts = () => {
             alignItems:"center",
             justifyContent:"center",
             justifyItems:"center",
-            marginTop:"20px",
-            marginBottom:"20px"
+            marginTop:"15vh",
+            marginBottom:"40vh"
         }}>
             <img style={{height:"400px"}} src="https://th.bing.com/th/id/OIP.IGl85cPVx5DIzKSCmigZ6QAAAA?pid=ImgDet&rs=1" alt="" />
         </div>
@@ -64,7 +71,7 @@ const MyPosts = () => {
                                             </span>
                                         </h4>
                                         <small>
-                                            <i className="far fa-clock" /> October 15, 2020
+                                            <i className="far fa-clock" /> {moment(item.time).format("D/M/YYYY")}
                                         </small>
                                     </div>
                                     <div className="card-footer">

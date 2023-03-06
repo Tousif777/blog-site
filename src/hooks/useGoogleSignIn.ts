@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { User, login, logout } from '../redux/slice/userSlice';
 import { auth, provider } from '../firebase';
+import { useNavigate } from 'react-router-dom';
 
 interface GoogleSignIn {
   signInWithGoogle: () => void;
@@ -10,6 +11,7 @@ interface GoogleSignIn {
 
 export const useGoogleSignIn = (): GoogleSignIn => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -34,7 +36,9 @@ export const useGoogleSignIn = (): GoogleSignIn => {
   };
 
   const signOut = () => {
-    auth.signOut().catch((error: Error) => console.error(error));
+    auth.signOut().catch((error: Error) => console.error(error)).then(()=>{
+      navigate('/')
+    })
   };
 
   return { signInWithGoogle, signOut };

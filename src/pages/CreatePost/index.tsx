@@ -1,7 +1,9 @@
 import React, { useState, FormEvent } from 'react';
+import { useSelector } from 'react-redux';
 import usePostCrud from '../../hooks/usePostCrud';
 
 const CreatePost: React.FC = () => {
+    const currentUser: any = useSelector((state: any) => state.user.currentUser);
     const { createPost, error } = usePostCrud();
     const [title, setTitle] = useState('');
     const [tag, setTag] = useState('');
@@ -31,8 +33,8 @@ const CreatePost: React.FC = () => {
 
     return (
         <>
-            <div className="container py-4 my-4">
-                <div className="row align-items-center py-4 my-4">
+            <div style={{height:"82vh"}} className="container py-4 my-4">
+                <div className="row align-items-center " style={{marginTop:"10vh"}}>
                     <div className='col-md-6'>
                         <img className='h-90' src='https://img.freepik.com/free-vector/organic-flat-blog-post-illustration-with-people_23-2148955260.jpg?t=st=1677768457~exp=1677769057~hmac=c08ebc03dc04929ca1e1c6a7799aef62b76eea7906fdba64356ce364513892ec' alt=''/>
                     </div>
@@ -57,7 +59,7 @@ const CreatePost: React.FC = () => {
                                 <label htmlFor="photo">Photo</label><br/>
                                 <input type="file" className="form-control-file mb-0 border-0 p-0" accept="image/*" onChange={handlePhotoChange} required />
                             </div>
-                            <button type="submit" className="btn btn-primary mt-4" disabled={isLoading}>{isLoading ? 'Loading...' : 'Add Post'}</button>
+                            <button  type="submit" className="btn btn-primary mt-4" disabled={!currentUser || isLoading}>{isLoading ? 'Loading...' : 'Add Post'}</button>
                         </form>
                     </div>
                 </div>

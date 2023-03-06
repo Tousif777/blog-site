@@ -9,12 +9,12 @@ export const User = () => {
   const navigate = useNavigate();
   const { signOut } = useGoogleSignIn();
   const currentUser = useSelector((state: any) => state.user.currentUser);
-  console.log('currentUser :>> ', currentUser);
 
 
   const handleLogin = () => {
     navigate("/login");
   };
+
 
   const [profileOpen, setProfileOpen] = useState(false)
   const close = () => {
@@ -29,11 +29,11 @@ export const User = () => {
               <img src={currentUser.photoURL} alt='' />
             </button>
             {profileOpen && (
-              <div className='openProfile boxItems' onClick={close}>
+              <div className='openProfile boxItems p-3' onClick={close}>
                 <span >
-                  <div className='image'>
+                  <div style={{marginLeft:"10%"}} className='image'>
                     <div  className='img'>
-                      <img style={{marginLeft:"10%"}} src={currentUser.photoURL} alt='' />
+                      <img  src={currentUser.photoURL} alt='' />
                     </div>
                     <div className='text'>
                       <label>{currentUser.name}</label><br />

@@ -1,6 +1,6 @@
 import React from 'react';
 import Login from './pages/Login';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import CreatePost from './pages/CreatePost';
 import Homepage from './pages/Homepage';
 import { useSelector } from 'react-redux';
@@ -19,9 +19,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/createPost" element={<CreatePost />} />
+
+          {/* {currentUser ? (
+            <>
+              <Route path="/my-posts" element={<MyPosts />} />
+              <Route path="/createPost" element={<CreatePost />} />
+            </>
+          ) : (
+            <Navigate to="/login" replace />
+          )} */}
           <Route path="/login" element={<Login />} />
           <Route path="/my-posts" element={<MyPosts />} />
-          <Route path="/post/:postId" element={<DetailsPages/>} />
+
+          <Route path="/post/:postId" element={<DetailsPages />} />
         </Routes>
         <Footer />
       </Router>
