@@ -35,7 +35,7 @@ export const Header = () => {
       <header className='header'>
         <div className='scontainer flex'>
           <div className='logo' onClick={handleHome}>
-            <h3>BlogSIte.</h3>
+            <h3 style={{cursor:"pointer"}}>BlogSIte.</h3>
           </div>
           <div className="d-flex ">
             {
